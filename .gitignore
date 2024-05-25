@@ -1,43 +1,49 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# http://www.kernel.org/pub/software/scm/git/docs/gitignore.html
+# ignore this file
+.gitignore
+# ignore all .svn folder.
+.svn/
 
-# Folder config file
-Desktop.ini
+# ignore eclipse project file
+.classpath
+.project
+project.properties
+bin/
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# ignore idea project folder
+.idea/
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# ignore temp output folder
+gen/
+out/
+obj/
 
-# Windows shortcuts
-*.lnk
+*.iml
+*.bin
+*.class
 
-# =========================
-# Operating System Files
-# =========================
+.gradle
+build/
 
-# OSX
-# =========================
+.settings/
+xcdebugger/
 
-.DS_Store
-.AppleDouble
-.LSOverride
+db_files
 
-# Thumbnails
-._*
+org.eclipse.core.resources.prefs
+org.eclipse.jdt.core.prefs
+.factorypath
+local.properties
+gradle/
+gradlew
+gradlew.bat
 
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
+auto_builder/
+paperwork.json
 
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+target/
+
+*.xcodeproj/
+.cxx/
+
+keystore.properties
