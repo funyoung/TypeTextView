@@ -3,11 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <Space
+        android:id="@+id/spacer"
+        android:layout_width="1dp"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"/>
+
     <com.uperone.typetext.view.TypeTextView
         android:id="@+id/typeTxtId"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:textSize="32dp"
+        android:gravity="center"
+        android:layout_above="@id/spacer"
         android:layout_centerVertical="true" />
 
     <Button

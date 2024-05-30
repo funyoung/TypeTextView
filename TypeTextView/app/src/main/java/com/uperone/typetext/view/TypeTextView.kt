@@ -51,9 +51,7 @@ class TypeTextView : AppCompatTextView {
             mTypeTimeDelay = typeTimeDelay
             text = ""
             startTypeTimer()
-            if (null != mOnTypeViewListener) {
-                mOnTypeViewListener!!.onTypeStart()
-            }
+            mOnTypeViewListener?.onTypeStart()
         }
     }
 
@@ -68,13 +66,12 @@ class TypeTextView : AppCompatTextView {
 
     private fun startTypeTimer() {
         stopTypeTimer()
-        mTypeTimer = Timer()
-        mTypeTimer!!.schedule(TypeTimerTask(), mTypeTimeDelay.toLong())
+        mTypeTimer = Timer().also { it.schedule(TypeTimerTask(), mTypeTimeDelay.toLong()) }
     }
 
     private fun stopTypeTimer() {
-        if (null != mTypeTimer) {
-            mTypeTimer!!.cancel()
+        mTypeTimer?.run {
+            cancel()
             mTypeTimer = null
         }
     }
@@ -94,24 +91,26 @@ class TypeTextView : AppCompatTextView {
     }
 
     private fun stopAudio() {
-        if (mMediaPlayer != null && mMediaPlayer!!.isPlaying) {
-            mMediaPlayer!!.stop()
-            mMediaPlayer!!.release()
-            mMediaPlayer = null
+        mMediaPlayer?.run {
+            if (isPlaying) {
+                stop()
+                release()
+                mMediaPlayer = null
+            }
         }
     }
 
     internal inner class TypeTimerTask : TimerTask() {
         override fun run() {
             post {
-                if (getText().toString().length < mShowTextString!!.length) {
-                    text = mShowTextString!!.substring(0, getText().toString().length + 1)
-                    startAudioPlayer()
-                    startTypeTimer()
-                } else {
-                    stopTypeTimer()
-                    if (null != mOnTypeViewListener) {
-                        mOnTypeViewListener!!.onTypeOver()
+                mShowTextString?.apply {
+                    if (getText().toString().length < length) {
+                        text = substring(0, getText().toString().length + 1)
+                        startAudioPlayer()
+                        startTypeTimer()
+                    } else {
+                        stopTypeTimer()
+                        mOnTypeViewListener?.onTypeOver()
                     }
                 }
             }

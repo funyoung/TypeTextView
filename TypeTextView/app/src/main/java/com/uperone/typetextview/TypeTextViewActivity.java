@@ -38,6 +38,7 @@ public class TypeTextViewActivity extends BaseActivity {
 	@Override
 	public void showConent() {
 		mTypeTextView.start( TEST_DATA );
+//		mTypeTextView.setText("TEST_DATA");
 	}
 	
 	public void onClick( View v ){
