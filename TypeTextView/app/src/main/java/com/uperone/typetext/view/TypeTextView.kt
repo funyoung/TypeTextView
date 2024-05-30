@@ -108,6 +108,7 @@ class TypeTextView : AppCompatTextView {
                         text = substring(0, getText().toString().length + 1)
                         startAudioPlayer()
                         startTypeTimer()
+                        mOnTypeViewListener?.onTyping()
                     } else {
                         stopTypeTimer()
                         mOnTypeViewListener?.onTypeOver()
@@ -120,6 +121,7 @@ class TypeTextView : AppCompatTextView {
     interface OnTypeViewListener {
         fun onTypeStart()
         fun onTypeOver()
+        fun onTyping()
     }
 
     companion object {
